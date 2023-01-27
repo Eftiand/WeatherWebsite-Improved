@@ -1,30 +1,37 @@
 
 import {useState, useEffect} from 'react'
-import { Header } from '../components/Header';
+import { Header } from '../components/Header/Header';
 import {
   currentWeatherFetchApi,
   forecastWeatherFetchApi,
 } from "../services/weatherFetchApi";
+import { BodyContainer } from './BodyContainer';
 
-export const WeatherContainer = () => {
+
+export const MainContainer = () => {
 
     const [currentWeather, setCurrentWeather] = useState({});
     const [forecastWeather, setForecastWeather] = useState([]);
 
     const [city, setCity] = useState('Stockholm');
 
-    useEffect(() => {
 
+
+    useEffect(() => {
         currentWeatherFetchApi(city).then((data) => {
+            if(data.error) {
+                return;
+            }
             setCurrentWeather(data);
         });
 
         forecastWeatherFetchApi(city).then((data) => {
+            if(data.error) {
+                return;
+            }
             setForecastWeather(data);
         });
         
-        console.log(forecastWeather);
-        console.log(currentWeather);
 
     }, [city])
 
@@ -33,7 +40,8 @@ export const WeatherContainer = () => {
     }
   return (
     <>
-      <Header callback={searchCity} />
+      <Header callback={searchCity} currentWeather={currentWeather} />
+      <BodyContainer forecastWeather={forecastWeather}/>
     </>
   );
 }

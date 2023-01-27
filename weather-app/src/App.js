@@ -1,9 +1,10 @@
-import { WeatherContainer } from "./container/WeatherContainer";
+import { MainContainer } from "./container/MainContainer";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <>
-      <WeatherContainer/>
+      <MainContainer/>
     </>
   );
 }

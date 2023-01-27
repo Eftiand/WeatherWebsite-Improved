@@ -1,0 +1,15 @@
+.font-standard {
+    font-family: 'Noto Sans Cherokee', sans-serif;
+}
+
+.font-bold {
+    font-family: 'Montserrat', sans-serif;
+}
+.span {
+    top: 4em;
+    position: absolute;
+}
+
+.container {
+    position: relative;
+}
